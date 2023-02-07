@@ -58,18 +58,36 @@ def peek():
         return
     return queue[(front +1)%SIZE]
 
-SIZE = 5
+#queue를 돌면서 확인하겠네.
+def calTime():
+    global SIZE, queue, front, rear
+    timeSum = 0
+    #print("front : ",(front+1)%SIZE)
+    #print("rear : ",(rear+1)%SIZE)
+
+    for i in range((front+1) % SIZE, (rear+1)%SIZE):
+        # print("flag")
+        # print(i)
+        timeSum += queue[i][1]
+    return timeSum
+
+
+waits = [("사용", 9), ("고장",3), ("환불", 4), ("환불" , 4), ("고장", 3)]
+SIZE = len(waits)+1
+
 queue = [None] * SIZE
-front = rear = -1
+front = rear = 0
 
-enQueue("정국")
-enQueue("뷔")
-enQueue("지민")
-enQueue("진")
-enQueue("슈가")
-print("대기 줄 상태 : ", queue)
+for wait in waits:
+    # print("queue : ", queue)
+    print("대기시간 : ", calTime())
+    print("queue : ",queue)
+    enQueue(wait)
+    print()
 
-for _ in range(rear+1):
-    print(deQueue(), "님 식당에 들어감")
-    print("대기줄 상태 확인 : ", queue)
-print("영업 끝")
+print("마지막 queue : ", queue)
+print("프로그램 종료!")
+
+
+
+
