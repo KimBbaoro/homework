@@ -1,12 +1,15 @@
-def scoreSort(ary):
+def mini(ary):
     n = len(ary)
-    for end in range(1,n):
-        for cur in range(end, 0, -1):
-            if ary[cur-1][1] > ary[cur][1]:
-                ary[cur - 1][1], ary[cur][1] = ary[cur][1],ary[cur-1][1]
-    return ary
+    for i in range(n-1):
+        idx = i
+        for j in range(i+1,n):
+            if ary[idx] > ary[j]:
+                idx = j
+        tmp = ary[i]
+        ary[i] = ary[idx]
+        ary[idx] = tmp
 
-arr = []
-arr = scoreSort(arr)
-for i in range(len(arr)//2):
-    print(arr[i][0], arr[len(arr)-1][0])
+for i in range(len(arr2)):
+    for j in range(lmne(arr2[i])):
+        arr1.append(arr2[i][j])
+
