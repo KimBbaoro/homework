@@ -1,10 +1,12 @@
-def notation(base, n):
-    if n < base:
-        print(numberChart[n], end = ' ')
-    else:
-        notation(base, n//base)
-        print(numberChart[n%base],end= ' ')
+def scoreSort(ary):
+    n = len(ary)
+    for end in range(1,n):
+        for cur in range(end, 0, -1):
+            if ary[cur-1][1] > ary[cur][1]:
+                ary[cur - 1][1], ary[cur][1] = ary[cur][1],ary[cur-1][1]
+    return ary
 
-
-numberChart = ['0','1','2','3','4','5','6','7','8','9',"A","B","C","D","E","F"]
-
+arr = []
+arr = scoreSort(arr)
+for i in range(len(arr)//2):
+    print(arr[i][0], arr[len(arr)-1][0])
