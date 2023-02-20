@@ -1,8 +1,10 @@
 def bin_Search(arr, fData):
+    global cnt
     start = 0
     end = len(arr)-1
 
     while start<=end:
+        cnt +=1
         mid = (start + end)//2
         if arr[mid] == fData:
             return mid
@@ -13,23 +15,16 @@ def bin_Search(arr, fData):
         else:
             return -1
 
+def seqSearch(ary, fData):
+    global cnt
+    pos = -1
+    for i in range(len(ary)):
+        cnt +=1
+        if ary[pos] == fData:
+            pos = i
+            break
+    return pos
+
 import random
-dataArr = ["바나나맛 우유", "레쓰비", "츄파", "도시락", "삼다수", "코카콜라", "삼각김밥"]
-sellArr = [random.choice(dataArr for _ in range(20))]
 
-sellP = list(set(sellArr.sort()))
 
-cntList = []
-
-for p in sellP:
-    cnt = 0
-    pos = 0
-    while pos!=-1:
-        pos = bin_Search(sellArr, p)
-        if pos!=-1:
-            cnt+=1
-            del(sellArr[pos]) #계속 없애기
-    cntList.append((p, cnt))
-
-print()
-print(cntList)
